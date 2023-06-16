@@ -1,0 +1,70 @@
+@import "./libs";
+
+body {
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: "Montserrat", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.btn-main {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #ea572e;
+  border: 1px solid #ea572e;
+  color: #fff;
+  border-radius: 4px;
+  padding: 20px 16px;
+  text-align: center;
+  min-width: 200px;
+
+  &:hover,&:active {
+    background: #000000;
+    border: 1px solid #000;
+    color: #fff;
+  }
+}
+
+.btn-secondary {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #EA572E;
+  border: 1px solid #ea572e;
+  border-radius: 4px;
+  padding: 20px 16px;
+  text-align: center;
+  min-width: 200px;
+
+  &:hover,&:active {
+    background-color: #fff;
+  }
+}
+
+@import "./header";
+@import "./top";
+@import "./about";
+@import "./team";
+@import "./video-company";
+@import "./services";
+@import "./advantages";
+@import "./persons";
+@import "./prices";
+@import "./documents";
+@import "./projects";
+@import "./answers";
+@import "./reviews";
+@import "./footer";

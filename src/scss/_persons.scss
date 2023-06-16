@@ -1,0 +1,85 @@
+.persons {
+  padding-top: 36px;
+  padding-bottom: 117px;
+  background-color: #f3f3f3;
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin: 0 0 62px;
+  }
+
+  &__items {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__elem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__elem-avatar {
+    width: 176px;
+    height: 176px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-bottom: 22px;
+  }
+
+  &__elem-title {
+    font-weight: 700;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__elem-descr {
+    font-weight: 400;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.banner {
+  min-height: 482px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../img/banner-decor.jpg);
+  padding: 110px 0;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &__body {
+    margin-right: 80px;
+  }
+
+  &__btn {
+    margin-top: 57px;
+    min-width: 272px;
+  }
+}

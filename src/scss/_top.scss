@@ -1,0 +1,43 @@
+.top {
+  min-height: 570px;
+  background-image: url(../img/top-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 70px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    padding-top: 88px;
+    margin: 0 0 14px;
+  }
+
+  &__descr {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 41px;
+  }
+
+  &__btns {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-first .btn-main {
+    min-width: 272px;
+  }
+
+  &__btn-second {
+    margin-left: 28px;
+
+    & .btn-secondary {
+      min-width: 272px;
+    }
+  }
+}

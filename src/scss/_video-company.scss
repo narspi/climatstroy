@@ -1,0 +1,25 @@
+.video-company {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  &__title {
+    font-size: 36px;
+    line-height: 1.5;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 50px;
+  }
+
+  &__youtube {
+    padding: 0 100px;
+    width: 100%;
+    position: relative;
+    aspect-ratio: 560 / 270;
+    & iframe {
+      position: absolute;
+      top: 0px;
+      left: 100px;
+      width: calc(100% - 200px);
+      height: 100%;
+    }
+  }
+}
