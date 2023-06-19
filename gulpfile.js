@@ -64,6 +64,7 @@ const jsLibs = () => {
     "node_modules/swiper/swiper-bundle.js",
     "node_modules/lazysizes/lazysizes.min.js",
     "node_modules/@fancyapps/ui/dist/index.umd.js",
+    "node_modules/dragscroll/dragscroll.js",
     "src/js/main.js"
     ])
     .pipe(concat('libs.js'))

@@ -11,12 +11,12 @@
   }
 
   &__slide {
-    border: 1px solid #93b3e4;
-    border-radius: 15px;
     height: unset;
   }
 
   &__slider-body {
+    border-radius: 15px;
+    border: 1px solid #93b3e4;
     height: 100%;
     padding: 64px 31px;
     display: flex;

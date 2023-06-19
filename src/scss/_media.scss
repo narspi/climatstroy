@@ -1,0 +1,724 @@
+@media (max-width: 1400px) {
+  .advantages__prev {
+    left: -5px;
+  }
+  .advantages__next {
+    right: -5px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .header {
+    &__drop-nav {
+      & .header__drop-elem {
+        top: calc(100% - 5px);
+        left: 0;
+      }
+    }
+  }
+
+  .advantages {
+    &__prev,
+    &__next {
+      height: 40px;
+      width: 22px;
+    }
+
+    &__prev {
+      left: 5px;
+      transform: translate(0, -50%);
+      z-index: 2;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    &__next {
+      right: 5px;
+      transform: translate(0, -50%);
+      z-index: 2;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    &__top-nav {
+      align-self: normal;
+      position: relative;
+      margin: 0 15px;
+      overflow-x: auto;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li {
+        margin: 0 15px;
+      }
+    }
+
+    &__logo {
+      margin-right: 0;
+    }
+
+    &__calc {
+      flex-direction: column;
+      margin: 0 0 0 auto;
+    }
+
+    &__calc-item {
+      margin: 0;
+      width: 100%;
+    }
+
+    &__calc-item + &__calc-item {
+      margin-top: 5px;
+    }
+
+    &__calc-btn {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  }
+
+  .about {
+    &__content {
+      width: 50%;
+      margin-right: 0;
+      padding-right: 20px;
+    }
+
+    &__title {
+      margin-top: 0;
+    }
+
+    &__decor {
+      margin-right: 0;
+      width: 50%;
+    }
+  }
+
+  .services {
+    &__items {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .advantages {
+    &__slider {
+      margin: 0 -15px;
+    }
+  }
+
+  .footer {
+    &__intro {
+      margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .header {
+    &__menu-left,
+    &__menu-right {
+      display: block;
+      background-color: transparent;
+      border: none;
+      font-weight: bold;
+      background-repeat: no-repeat;
+      background-size: auto 20px;
+      background-position: center;
+    }
+
+    &__menu-left {
+      margin-left: 15px;
+      background-image: url(../img/arrow-header-prev.svg);
+    }
+
+    &__menu-right {
+      margin-right: 15px;
+      background-image: url(../img/arrow-header-next.svg);
+    }
+  }
+
+  .about {
+    &__inner {
+      flex-direction: column;
+    }
+
+    &__content {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    &__decor {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 439px;
+    }
+  }
+
+  .team {
+    &__decor {
+      height: 60px;
+    }
+
+    &__item-title {
+      font-size: 40px;
+    }
+  }
+
+  .video-company__youtube {
+    padding: 0 50px;
+
+    & iframe {
+      left: 50px;
+      width: calc(100% - 100px);
+    }
+  }
+
+  .services {
+    &__items {
+      display: flex;
+      gap: unset;
+    }
+
+    &__pagination {
+      display: flex;
+    }
+  }
+
+  .persons {
+    &__items {
+      flex-wrap: unset;
+      justify-content: unset;
+      gap: unset;
+    }
+
+    &__elem {
+      width: unset;
+    }
+
+    &__pagination {
+      display: flex;
+    }
+  }
+
+  .projects {
+    &__items {
+      display: flex;
+      gap: unset;
+    }
+
+    &__item {
+      margin: 0;
+      min-height: 200px;
+      height: unset;
+
+      & .swiper-lazy-preloader {
+        display: block;
+      }
+    }
+
+    &__pagination {
+      display: flex;
+    }
+  }
+
+  .footer {
+    &__bottom-inner {
+      justify-content: space-between;
+    }
+
+    &__intro {
+      margin-right: 0px;
+    }
+
+    &__menu {
+      min-width: unset;
+
+      & a{
+        font-size: 12px;
+      }
+
+      & li + li {
+        margin-top: 10px;
+      }
+    }
+
+    &__policy {
+      font-size: 12px;
+    }
+
+    &__contacts-top {
+      font-size: 12px;
+    }
+
+    &__contacts-body a, &__contacts-body p {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .advantages__prev,
+  .advantages__next {
+    display: none;
+  }
+
+  .banner {
+    &__body {
+      margin-right: 0;
+    }
+
+    &__btn {
+      margin-top: 25px;
+    }
+  }
+
+  .answers {
+    &__accardion-btn {
+      padding: 18px 45px 18px 20px;
+
+      &::before {
+        right: 11px;
+      }
+    }
+
+    &__accardion-body {
+      margin: 0 20px;
+    }
+  }
+
+  .reviews {
+    &__slider-body {
+      margin: 1px;
+      padding: 40px 20px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    &__calc-btn {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+  }
+  .top {
+    &__title {
+      font-size: 30px;
+    }
+
+    &__btns {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__btn-first button {
+      width: 100%;
+    }
+
+    &__btn-second {
+      margin-left: 0;
+      margin-top: 15px;
+      & button {
+        width: 100%;
+      }
+    }
+  }
+
+  .team {
+    &__items {
+      flex-wrap: wrap;
+      row-gap: 20px;
+    }
+
+    &__item {
+      width: 50%;
+    }
+  }
+
+  .banner {
+    background-image: url(../img/banner-decor-mobile.jpg);
+    &__inner {
+      align-items: flex-start;
+    }
+  }
+
+  .footer {
+    &__menu {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    // position: fixed;
+    // width: 100%;
+    // top: 0;
+    // left: 0;
+
+    &__top {
+      display: none;
+    }
+
+    &__bottom {
+      background: linear-gradient(
+        90deg,
+        #eaf5f9 0%,
+        #c0d9ec 37.36%,
+        #dfecfa 63.02%,
+        #e6f2f8 100%
+      );
+    }
+
+    &__logo {
+      width: 70px;
+      & img {
+        max-width: 100%;
+      }
+    }
+
+    &__calc {
+      display: none;
+    }
+
+    &__contacts {
+      margin: 0 auto;
+    }
+
+    &__call {
+      display: none;
+    }
+
+    &__mobile {
+      align-self: stretch;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 70px;
+    }
+  }
+
+  .top {
+    &__title {
+      font-size: 22px;
+    }
+
+    &__descr {
+      font-size: 14px;
+      margin-bottom: 51px;
+    }
+
+    &__btn-first button,
+    &__btn-second button {
+      font-size: 14px;
+      padding: 9px 10px;
+    }
+
+    &-calc {
+      display: block;
+    }
+  }
+
+  .about {
+    &__inner {
+      padding-top: 0;
+      margin-bottom: 0px;
+      padding-bottom: 35px;
+    }
+
+    &__content {
+      order: 1;
+    }
+
+    &__decor {
+      margin: 0 auto 10px;
+    }
+
+    &__title {
+      font-size: 22px;
+      margin-top: 30px;
+      margin-bottom: 11px;
+    }
+
+    &__descr {
+      font-size: 12px;
+    }
+  }
+
+  .team {
+    padding-top: 23px;
+    padding-bottom: 35px;
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 26px;
+    }
+
+    &__decor {
+      height: 40px;
+    }
+
+    &__item-title {
+      font-size: 24px;
+    }
+
+    &__descr {
+      font-size: 12px;
+    }
+  }
+
+  .video-company {
+    padding-top: 30px;
+    padding-bottom: 24px;
+    &__title {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    &__youtube {
+      padding: 0;
+
+      & iframe {
+        left: 0px;
+        width: 100%;
+      }
+    }
+  }
+
+  .services {
+    &__title {
+      font-size: 22px;
+    }
+  }
+
+  .advantages {
+    padding-top: 31px;
+    padding-bottom: 28px;
+    &__title {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    &__pagination {
+      margin-top: 11px;
+    }
+
+    &__slider {
+      margin: 0 -15px;
+
+      & .swiper-slide {
+        padding: 15px;
+      }
+    }
+
+    &__item {
+      padding: 15px;
+    }
+  }
+
+  .persons {
+    padding-bottom: 40px;
+    &__title {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    &__pagination {
+      margin-top: 26px;
+    }
+  }
+
+  .banner {
+    padding-top: 50px;
+    padding-bottom: 75px;
+    min-height: unset;
+    &__title {
+      font-size: 24px;
+    }
+
+    &__btn {
+      margin-top: 33px;
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+
+  .prices {
+    padding: 24px 0 45px;
+    &__title {
+      font-size: 22px;
+    }
+  }
+
+  .documents {
+    padding-top: 32px;
+    padding-bottom: 26px;
+    &__title {
+      font-size: 22px;
+      margin-bottom: 11px;
+    }
+
+    &__item {
+      & figcaption {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .projects {
+    padding-top: 24px;
+    padding-bottom: 26px;
+    &__title {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+  }
+
+  .answers {
+    padding-top: 23px;
+    padding-bottom: 40px;
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 21px;
+    }
+
+    &__accardion-btn {
+      padding: 13px 26px 13px 8px;
+
+      &::before {
+        right: 8px;
+        height: 6px;
+        width: 14px;
+      }
+    }
+
+    &__accardion-title {
+      font-size: 10px;
+    }
+
+    &__accardion-body {
+      margin: 0 10px;
+      & h1,
+      & h2,
+      & h3,
+      & h4,
+      & h5,
+      & h6 {
+        font-size: 13px;
+      }
+
+      & p {
+        font-size: 12px;
+      }
+    }
+
+    &__accardion-elem + &__accardion-elem {
+      margin-top: 8px;
+    }
+  }
+
+  .reviews {
+    padding-top: 24px;
+    padding-bottom: 20px;
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 17px;
+    }
+  }
+
+  .footer {
+    &__top {
+      padding-top: 30px;
+    }
+    
+    &__title {
+      font-size: 22px;
+    }
+
+    &__body {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    &__intro {
+      order: 1;
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__logo {
+      display: none;
+    }
+
+    &__social {
+      grid-template-columns: repeat(2,36px);
+      margin-left: auto;
+      width: fit-content;
+    }
+
+    &__policy {
+      display: none;
+    }
+
+    &__paymends-card {
+      margin-top: 20px;
+      margin-top: auto;
+    }
+
+    &__contacts-policy {
+      display: block;
+
+      & a {
+        color: #93B3E4;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    &__mobile {
+      width: unset;
+    }
+  }
+
+  .persons {
+    &__elem-avatar {
+      width: 152px;
+      height: 152px;
+      margin-bottom: 10px;
+    }
+
+    &__elem-title {
+      font-size: 12px;
+    }
+
+    &__elem-descr {
+      font-size: 12px;
+    }
+  }
+
+  .banner {
+    padding-top: 20px;
+    padding-bottom: 15px;
+
+    &__inner {
+      align-items: stretch;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}
