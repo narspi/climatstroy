@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "build": "gulp build --production",
+    "dev": "gulp"
   },
   "keywords": [],
   "author": "alexander ivanov",
@@ -23,7 +25,9 @@
   "dependencies": {
     "@fancyapps/ui": "^5.0.19",
     "dragscroll": "^0.0.8",
+    "gulp-mode": "^1.1.0",
     "gulp-rename": "^2.0.0",
+    "gulp-uglify-es": "^3.0.0",
     "lazysizes": "^5.3.2",
     "modern-normalize": "^2.0.0",
     "swiper": "^9.4.1",

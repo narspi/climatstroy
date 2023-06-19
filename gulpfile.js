@@ -5,9 +5,15 @@ import concat from "gulp-concat";
 import sourcemaps from "gulp-sourcemaps";
 import dartSass from "sass";
 import gulpSass from "gulp-sass";
-// import rename from "gulp-rename";
+import gulpMode from "gulp-mode";
+
+import uglifyGulp from 'gulp-uglify-es';
 
 const scss = gulpSass(dartSass);
+const mode = gulpMode();
+const uglify = uglifyGulp.default;
+
+const isProduction = mode.production();
 
 const { src, dest, watch, series } = gulp;
 const sync = browserSync.create();
@@ -28,7 +34,7 @@ const htmlInclude = () => {
     .pipe(sync.stream());
 };
 
-const transportLibs = () => {
+const transportCssLibs = () => {
   return src([
     "node_modules/modern-normalize/modern-normalize.css",
     "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css",
@@ -40,13 +46,13 @@ const transportLibs = () => {
 
 const createCss = () => {
   return src("src/scss/**/*.scss")
-    .pipe(sourcemaps.init())
+    .pipe(mode.development(sourcemaps.init()))
     .pipe(
       scss({
-        outputStyle: "expanded",
+        outputStyle: isProduction? "compressed": "expanded",
       })
     )
-    .pipe(sourcemaps.write())
+    .pipe(mode.development(sourcemaps.write()))
     .pipe(dest("dist/css"))
     .pipe(sync.stream());
 };
@@ -65,31 +71,51 @@ const jsLibs = () => {
     "node_modules/lazysizes/lazysizes.min.js",
     "node_modules/@fancyapps/ui/dist/index.umd.js",
     "node_modules/dragscroll/dragscroll.js",
-    "src/js/main.js"
-    ])
-    .pipe(concat('libs.js'))
+  ])
+    .pipe(concat("libs.js"))
+    .pipe(uglify())
     .pipe(dest("dist/js"))
     .pipe(sync.stream());
+};
+
+const transportJs = () => {
+  return src(["src/js/main.js"])
+  .pipe(mode.production(uglify()))
+  .pipe(dest("dist/js"))
+  .pipe(sync.stream());
 };
 
 const server = () => {
   sync.init({
     server: "./dist",
-    tunnel: "my-private-site"
+    tunnel: "my-private-site",
   });
   watch("./src/fonts/**/*.*", transportFonts);
   watch("./src/img/**/*.*", transportImg);
   watch("./src/html/**/*.html", htmlInclude);
   watch("./src/scss/**/*.scss", createCss);
-  watch("./src/js/**/*.js", jsLibs);
+  watch("./src/js/**/*.js", transportJs);
 };
 
-export default series(
+const build = series(
   htmlInclude,
-  transportLibs,
+  transportCssLibs,
   jsLibs,
   createCss,
   transportFonts,
   transportImg,
+  transportJs
+);
+
+const defaultGulp = series(
+  htmlInclude,
+  transportCssLibs,
+  jsLibs,
+  createCss,
+  transportFonts,
+  transportImg,
+  transportJs,
   server
 );
+
+export { build, defaultGulp as default };
