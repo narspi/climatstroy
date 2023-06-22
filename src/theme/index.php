@@ -1,15 +1,20 @@
-<section class="top">
+<?php get_header();?>
+
+<div class="focus-wrapper">
+<section class="top" style="--top-bg: url(<?php echo get_field('image');?>);">
         <div class="container">
-            <h1 class="top__title">
-                Монтаж вентиляции<br>«Под ключ»<br>любой сложности
-            </h1>
-            <p class="top__descr">Получите бесплатно расчет в виде 3-х индивидуальных<br>смет для вашего дома</p>
+            <div class="top__text">
+              <h1 class="top__title">
+                  <?php the_title(); ?>
+              </h1>
+              <p class="top__descr"><?php echo get_field('first-screen-text'); ?></pre>
+            </div>
             <ul class="top__btns">
                 <li class="top__btn-first">
-                    <button class="btn-main">Получить сметы бесплатно</button>
+                    <button class="btn-main" data-modal-target="contact-form-4236">Получить сметы бесплатно</button>
                 </li>
                 <li class="top__btn-second">
-                    <button class="btn-secondary">Задать вопрос</button>
+                    <button class="btn-secondary" data-modal-target="contact-form-4237">Задать вопрос</button>
                 </li>
             </ul>
         </div>
@@ -18,10 +23,10 @@
         <div class="container">
             <ul class="top-calc__list">
                 <li class="top-calc__item">
-                    <button class="top-calc__btn">Калькулятор монтажа отопления</button>
+                    <button class="top-calc__btn" data-modal-target="heating">Калькулятор монтажа отопления</button>
                 </li>
                 <li class="top-calc__item">
-                    <button class="top-calc__btn">Калькулятор монтожа вентиляции</button>
+                    <button class="top-calc__btn" data-modal-target="ventilation">Калькулятор монтожа вентиляции</button>
                 </li>
             </ul>
         </div>
@@ -110,57 +115,20 @@
       <div class="container">
         <h2 class="services__title">Наши услуги</h2>
         <div class="swiper services__slider">
+          <?php
+            $data = get_field('services__slider','option');
+            
+          ?>
           <div class="services__items swiper-wrapper">
+            <?php
+              foreach($data as $key => $val) {
+            ?>
             <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Вентиляция</h3>
-              <p class="services__descr">Проектируем, подбираем и устанавливаем системы винтеляций для маленьких и больших помещений</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
+              <h3 class="services__item-title"><?php echo $val['services_slider-title']; ?></h3>
+              <p class="services__descr"><?php echo $val['services__slider-descr']; ?></p>
+              <a class="btn-secondary services__btn" href="<?php echo $val['services__slider-link']; ?>">Подробнее</a>
             </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Кондиционирование</h3>
-              <p class="services__descr">Осуществляем монтаж кондиционирования под ключ, а также наладку различных систем</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Отопление</h3>
-              <p class="services__descr">Предлагаем проекты, начиная от теплого пола до котельной на производстве</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Вода и канализация </h3>
-              <p class="services__descr">Делаем монтаж водопровода, систем пожаротушения и водоочистки</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Слаботочные сети </h3>
-              <p class="services__descr">Видеонаблюдение, умный дом, сигнализации, контроль доступа и видеонаблюдение</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Электроснабжение</h3>
-              <p class="services__descr">Разрабатываем проекты внешних и внутренних систем электроснабжения, делаем монтаж</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Проектрирование</h3>
-              <p class="services__descr">Готовим инженерные проекты вентиляции, кондиционирования, автоматизированных узлов погодного регулирования, котельных, тепловых пунктов, водопроводов и пр.</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Пусконаладочные работы</h3>
-              <p class="services__descr">Производим запуск работ систем вентиляции, кондиционирования, автоматизированных  узлов погодного регулирования, котельных и тепловых пунктов</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Оформление документов</h3>
-              <p class="services__descr">Готовим исполнительную документацию, акты, согласовываем проекты, осуществляем технический надзор, строительный контроль энергоаудит и пр. </p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
-            <div class="services__item swiper-slide">
-              <h3 class="services__item-title">Ввод в эксплуатацию</h3>
-              <p class="services__descr">тут ставить текст</p>
-              <a class="btn-secondary services__btn" href="#">Подробнее</a>
-            </div>
+            <?php } ?>
           </div>
           <div class="services__pagination"></div>
         </div>
@@ -172,115 +140,26 @@
         <button class="advantages__prev" aria-label="Назад"></button>
         <button class="advantages__next" aria-label="Вперед"></button>
         <div class="swiper advantages__slider">
+          <?php
+            $data = get_field('advantages__slider','option');
+          ?>
           <div class="swiper-wrapper">
+            <?php
+              foreach($data as $key => $val) {
+            ?>   
             <div class="swiper-slide">
               <div class="advantages__item">
                 <div
                   class="advantages__decor"
-                  style="background-image: url('img/services-icon-1.svg')"
+                  style="background-image: url('<?php echo $val['advantages__slider-decor']; ?>')"
                 ></div>
-                <h3 class="advantages__item-title">Комплексный подход</h3>
+                <h3 class="advantages__item-title"><?php echo $val['advantages__slider-title']; ?></h3>
                 <p class="advantages__descr">
-                  Компания, которая занимается монтажом инженерных систем зданий,
-                  применяет комплексный подход к работе. Это означает, что она
-                  проектирует, монтирует и настраивает все инженерные системы
-                  зданий, включая отопление, вентиляцию, кондиционирование,
-                  электрические и сантехнические системы. Это позволяет
-                  предоставлять заказчику полный спектр услуг по монтажу инженерных
-                  систем зданий.
+                  <?php echo $val['advantages__slider-descr']; ?>
                 </p>
               </div>
             </div>
-            <div class="swiper-slide">
-              <div class="advantages__item">
-                <div
-                  class="advantages__decor"
-                  style="background-image: url('img/services-icon-2.svg')"
-                ></div>
-                <h3 class="advantages__item-title">Минимизация рисков</h3>
-                <p class="advantages__descr">
-                  Компания, которая занимается монтажом инженерных систем зданий,
-                  может помочь клиенту минимизировать возможные риски при монтаже
-                  инженерных систем зданий. Благодаря высокому профессионализму,
-                  компания может предупредить o возможных проблемах и разработать
-                  меры по их предотвращению.
-                </p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="advantages__item">
-                <div
-                  class="advantages__decor"
-                  style="background-image: url('img/services-icon-3.svg')"
-                ></div>
-                <h3 class="advantages__item-title">Экономия времени и ресурсов</h3>
-                <p class="advantages__descr">
-                  Профессиональный монтаж инженерных систем позволяет экономить
-                  время и ресурсы за счет повышения эффективности работы систем и
-                  предотвращения их неполадок и неисправностей.
-                </p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="advantages__item">
-                <div
-                  class="advantages__decor"
-                  style="background-image: url('img/services-icon-3.svg')"
-                ></div>
-                <h3 class="advantages__item-title">Опыт и профессионализм</h3>
-                <p class="advantages__descr">
-                  Компания, которая работает на рынке монтажа инженерных систем
-                  зданий, обладает опытом и профессионализмом в этой области.
-                  Благодаря этому, она может решать самые сложные и нетипичные
-                  задачи, связанные с монтажом инженерных систем в зданиях.
-                </p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="advantages__item">
-                <div
-                  class="advantages__decor"
-                  style="background-image: url('img/services-icon-1.svg')"
-                ></div>
-                <h3 class="advantages__item-title">Опыт и профессионализм</h3>
-                <p class="advantages__descr">
-                  Компания, которая работает на рынке монтажа инженерных систем
-                  зданий, обладает опытом и профессионализмом в этой области.
-                  Благодаря этому, она может решать самые сложные и нетипичные
-                  задачи, связанные с монтажом инженерных систем в зданиях.
-                </p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="advantages__item">
-                <div
-                  class="advantages__decor"
-                  style="background-image: url('img/services-icon-2.svg')"
-                ></div>
-                <h3 class="advantages__item-title">Опыт и профессионализм</h3>
-                <p class="advantages__descr">
-                  Компания, которая работает на рынке монтажа инженерных систем
-                  зданий, обладает опытом и профессионализмом в этой области.
-                  Благодаря этому, она может решать самые сложные и нетипичные
-                  задачи, связанные с монтажом инженерных систем в зданиях.
-                </p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="advantages__item">
-                <div
-                  class="advantages__decor"
-                  style="background-image: url('img/services-icon-3.svg')"
-                ></div>
-                <h3 class="advantages__item-title">Опыт и профессионализм</h3>
-                <p class="advantages__descr">
-                  Компания, которая работает на рынке монтажа инженерных систем
-                  зданий, обладает опытом и профессионализмом в этой области.
-                  Благодаря этому, она может решать самые сложные и нетипичные
-                  задачи, связанные с монтажом инженерных систем в зданиях.
-                </p>
-              </div>
-            </div>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -294,7 +173,7 @@
             <li class="persons__elem swiper-slide">
               <img
                 class="persons__elem-avatar"
-                src="img/persons-avatar-1.png"
+                src="<?php  echo get_template_directory_uri(); ?>/assets/img/persons-avatar-1.png"
                 alt="Зингман Максим Владимирович"
                 loading="lazy"
               />
@@ -304,7 +183,7 @@
             <li class="persons__elem swiper-slide">
               <img
                 class="persons__elem-avatar"
-                src="img/persons-avatar-2.png"
+                src="<?php  echo get_template_directory_uri(); ?>/assets/img/persons-avatar-2.png"
                 alt="Зингман Максим Владимирович"
                 loading="lazy"
               />
@@ -316,7 +195,7 @@
             <li class="persons__elem swiper-slide">
               <img
                 class="persons__elem-avatar"
-                src="img/persons-avatar-3.png"
+                src="<?php  echo get_template_directory_uri(); ?>/assets/img/persons-avatar-3.png"
                 alt="Зингман Максим Владимирович"
                 loading="lazy"
               />
@@ -326,7 +205,7 @@
             <li class="persons__elem swiper-slide">
               <img
                 class="persons__elem-avatar"
-                src="img/persons-avatar-4.png"
+                src="<?php  echo get_template_directory_uri(); ?>/assets/img/persons-avatar-4.png"
                 alt="Зингман Максим Владимирович"
                 loading="lazy"
               />
@@ -336,7 +215,7 @@
             <li class="persons__elem swiper-slide">
               <img
                 class="persons__elem-avatar"
-                src="img/persons-avatar-5.png"
+                src="<?php  echo get_template_directory_uri(); ?>/assets/img/persons-avatar-5.png"
                 alt="Зингман Максим Владимирович"
                 loading="lazy"
               />
@@ -352,63 +231,53 @@
       <div class="container banner__inner">
         <div class="banner__body">
           <h2 class="banner__title">Получить<br />консультацию<br />инженера</h2>
-          <button class="btn-main banner__btn">Задать вопрос</button>
+          <button class="btn-main banner__btn" data-modal-target="contact-form-4237">Задать вопрос</button>
         </div>
       </div>
     </div>
-    <section class="prices">
+    <?php
+      $table = get_field('price');
+    ?>
+    <section class="extra-section">
         <div class="container">
-            <h2 class="prices__title">Цены</h2>
-            <p>Тут будет таблица that is end</p>
+            <h2 class="extra-section__title">Цены</h2>
+            <div>
+              <?php echo do_shortcode($table); ?>
+            </div>
         </div>
-    </section><section class="documents">
+    </section>
+    <?php
+      $calc = get_field('calc');
+    ?>
+    <section class="extra-section">
+        <div class="container">
+            <h2 class="extra-section__title">Калькулятор</h2>
+            <div>
+              <?php echo do_shortcode($calc); ?>
+            </div>
+        </div>
+    </section>
+    <section class="documents">
       <div class="container">
         <h2 class="documents__title">Наши документы</h2>
+        <pre>
+        <?php
+          $documetns_data = get_field('documents_slider','option');
+        ?>
+        </pre>
         <div class="swiper documents__slider">
           <div class="swiper-wrapper">
-            
+            <?php
+              foreach($documetns_data as $key => $val) {
+            ?>
             <div class="swiper-slide documents__item">
-              <figure href="img/document-fake.svg" data-fancybox="document-gallary">
-                <figcaption class="documents__item-caption">Удостоверние</figcaption>
-                <img src="/img/document-fake.svg" loading="lazy"/>
+              <figure href="<?php  echo $val['documents_image']; ?>" data-fancybox="document-gallary">
+                <figcaption class="documents__item-caption"><?php echo $val['documents_caption'];?></figcaption>
+                <img src="<?php  echo $val['documents_image']; ?>" loading="lazy"/>
                 <div class="swiper-lazy-preloader"></div>
               </figure>
             </div>
-            <div class="swiper-slide documents__item">
-              <figure href="img/document-fake.svg" data-fancybox="document-gallary">
-                <figcaption class="documents__item-caption">Фейковая подпись</figcaption>
-                <img src="/img/document-fake.svg" loading="lazy"/>
-                <div class="swiper-lazy-preloader"></div>
-              </figure>
-            </div>
-            <div class="swiper-slide documents__item">
-              <figure href="img/document-fake.svg" data-fancybox="document-gallary">
-                <figcaption class="documents__item-caption">Фейковая подпись</figcaption>
-                <img src="/img/document-fake.svg" loading="lazy"/>
-                <div class="swiper-lazy-preloader"></div>
-              </figure>
-            </div>
-            <div class="swiper-slide documents__item">
-              <figure  data-src="img/document-1.jpg" data-fancybox="document-gallary">
-                <figcaption class="documents__item-caption">Диплом</figcaption>
-                <img src="/img/document-1.jpg" loading="lazy"/>
-                <div class="swiper-lazy-preloader"></div>
-              </figure>
-            </div>
-            <div class="swiper-slide documents__item">
-              <figure href="img/document-2.png" data-fancybox="document-gallary">
-                <figcaption class="documents__item-caption">Выписка</figcaption>
-                <img src="/img/document-2.png" loading="lazy"/>
-                <div class="swiper-lazy-preloader"></div>
-              </figure>
-            </div>
-            <div class="swiper-slide documents__item">
-              <figure href="img/document-fake.svg" data-fancybox="document-gallary">
-                <figcaption class="documents__item-caption">Шаблон договора</figcaption>
-                <img src="/img/document-fake.svg" loading="lazy"/>
-                <div class="swiper-lazy-preloader"></div>
-              </figure>
-            </div>
+            <?php } ?>
           </div>
           <button class="documents__prev"></button>
           <button class="documents__next"></button>
@@ -423,34 +292,34 @@
           <div class="projects__items swiper-wrapper">
             <figure class="projects__item swiper-slide">
               <figcaption class="projects__item-title">Отопление</figcaption>
-              <img src="img/project-1.jpg" alt="projects" loading="lazy" />
+              <img src="<?php  echo get_template_directory_uri(); ?>/assets/img/project-1.jpg" alt="projects" loading="lazy" />
               <div class="swiper-lazy-preloader"></div>
             </figure>
             <figure class="projects__item swiper-slide">
               <figcaption class="projects__item-title">Сантехника</figcaption>
-              <img src="img/project-2.jpg" alt="projects" loading="lazy" />
+              <img src="<?php  echo get_template_directory_uri(); ?>/assets/img/project-2.jpg" alt="projects" loading="lazy" />
               <div class="swiper-lazy-preloader"></div>
             </figure>
             <figure class="projects__item swiper-slide">
               <figcaption class="projects__item-title">Вентиляция</figcaption>
-              <img src="img/project-3.jpg" alt="projects" loading="lazy" />
+              <img src="<?php  echo get_template_directory_uri(); ?>/assets/img/project-3.jpg" alt="projects" loading="lazy" />
               <div class="swiper-lazy-preloader"></div>
             </figure>
             <figure class="projects__item swiper-slide">
               <figcaption class="projects__item-title">Проектирование</figcaption>
-              <img src="img/project-4.jpg" alt="projects" loading="lazy" />
+              <img src="<?php  echo get_template_directory_uri(); ?>/assets/img/project-4.jpg" alt="projects" loading="lazy" />
               <div class="swiper-lazy-preloader"></div>
             </figure>
             <figure class="projects__item swiper-slide">
               <figcaption class="projects__item-title">
                 Кондиционирование
               </figcaption>
-              <img src="img/project-5.jpg" alt="projects" loading="lazy" />
+              <img src="<?php  echo get_template_directory_uri(); ?>/assets/img/project-5.jpg" alt="projects" loading="lazy" />
               <div class="swiper-lazy-preloader"></div>
             </figure>
             <figure class="projects__item swiper-slide">
               <figcaption class="projects__item-title">Слаботочные сети</figcaption>
-              <img src="img/project-6.jpg" alt="projects" loading="lazy" />
+              <img src="<?php  echo get_template_directory_uri(); ?>/assets/img/project-6.jpg" alt="projects" loading="lazy" />
               <div class="swiper-lazy-preloader"></div>
             </figure>
           </div>
@@ -461,226 +330,137 @@
     <section class="answers">
       <div class="container">
         <h2 class="answers__title">ОТВЕТЫ НА ЧАСТЫЕ ВОПРОСЫ</h2>
+        <?php
+          $data_acf = get_field('quest-answer');
+          $length_arr_answers = count($data_acf) / 2;
+          $current__data = array();
+          for ($index = 1; $index <= $length_arr_answers; $index++) {
+            $current__data[$index]["quest"] = $data_acf["quest-$index"];
+            $current__data[$index]["ans"] = $data_acf["ans-$index"];
+          };
+        ?>
         <ul class="answers__accardion">
+          <?php
+            foreach ($current__data as $key => $val) {
+          ?>
           <li class="answers__accardion-elem">
             <button class="answers__accardion-btn">
               <h3 class="answers__accardion-title">
-                Какие услуги предоставляет ваша компания в области инженерии?
+                <?php echo $val["quest"] ; ?>
               </h3>
             </button>
             <div class="answers__accardion-drop">
               <div class="answers__accardion-body">
                 <p>
-                  Мы предоставляем комплексные услуги в области проектирования,
-                  строительства и реконструкции инженерных систем (отопление,
-                  вентиляция, кондиционирование, электричество и т.д.), а также в
-                  области инженерного оборудования (генераторы, насосы и т.д.).
-                </p>
-                <p>
-                  Мы предоставляем комплексные услуги в области проектирования,
-                  строительства и реконструкции инженерных систем (отопление,
-                  вентиляция, кондиционирование, электричество и т.д.), а также в
-                  области инженерного оборудования (генераторы, насосы и т.д.).
-                </p>
-                <h4>Возмжный заголовок</h4>
-                <p>
-                  Мы предоставляем комплексные услуги в области проектирования,
-                  строительства и реконструкции инженерных систем (отопление,
-                  вентиляция, кондиционирование, электричество и т.д.), а также в
-                  области инженерного оборудования (генераторы, насосы и т.д.).
-                </p>
-                <p>
-                  Мы предоставляем комплексные услуги в области проектирования,
-                  строительства и реконструкции инженерных систем (отопление,
-                  вентиляция, кондиционирование, электричество и т.д.), а также в
-                  области инженерного оборудования (генераторы, насосы и т.д.).
+                  <?php echo $val["ans"] ; ?>
                 </p>
               </div>
             </div>
           </li>
-          <li class="answers__accardion-elem">
-            <button class="answers__accardion-btn">
-              <h3 class="answers__accardion-title">
-                Какова средняя стоимость услуг вашей компании?
-              </h3>
-            </button>
-            <div class="answers__accardion-drop">
-              <div class="answers__accardion-body">
-                <p>
-                  Стоимость услуг зависит от объёма и сложности работ, а также от
-                  выбора материалов и оборудования. Мы готовы рассмотреть каждый
-                  проект индивидуально и предложить наиболее выгодное решение по
-                  цене и качеству.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="answers__accardion-elem">
-            <button class="answers__accardion-btn">
-              <h3 class="answers__accardion-title">
-                Какая квалификация у ваших специалистов?
-              </h3>
-            </button>
-            <div class="answers__accardion-drop">
-              <div class="answers__accardion-body">
-                <p>
-                  В нашей компании работают только квалифицированные и опытные
-                  специалисты, которые регулярно повышают свою квалификацию и следят
-                  за последними тенденциями в области инженерии.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="answers__accardion-elem">
-            <button class="answers__accardion-btn">
-              <h3 class="answers__accardion-title">
-                Есть ли у вашей компании референции и отзывы от клиентов?
-              </h3>
-            </button>
-            <div class="answers__accardion-drop">
-              <div class="answers__accardion-body">
-                <p>
-                  Мы гордимся своей работой и всегда готовы предоставить референции
-                  и отзывы от наших довольных клиентов. Вы можете ознакомиться с
-                  примерами наших проектов на сайте компании.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="answers__accardion-elem">
-            <button class="answers__accardion-btn">
-              <h3 class="answers__accardion-title">
-                Каковы сроки выполнения заказа?
-              </h3>
-            </button>
-            <div class="answers__accardion-drop">
-              <div class="answers__accardion-body">
-                <p>
-                  Сроки выполнения заказа зависят от объёма и сложности работ, а
-                  также от доступности материалов и оборудования. Мы всегда
-                  стараемся выполнить заказ в кратчайшие сроки без потери качества.
-                </p>
-              </div>
-            </div>
-          </li>
+          <?php } ?>
         </ul>
       </div>
     </section>
     <section class="reviews">
       <div class="container">
         <h2 class="reviews__title">Отзывы</h2>
+        <pre>
+        <?php
+          $data_acf = get_field('reviews');
+          $length_arr_reviews = count($data_acf) / 3;
+          $current__data = array();
+          for ($index = 1; $index <= $length_arr_reviews; $index++) {
+            $current__data[$index]["name"] = $data_acf["name$index"];
+            $current__data[$index]["service"] = $data_acf["service$index"];
+            $current__data[$index]["text-rev"] = $data_acf["text-rev$index"];
+          };
+        ?>
+        </pre>
         <div class="swiper reviews__slider">
           <div class="swiper-wrapper">
+          <?php
+            foreach ($current__data as $key => $val) {
+          ?>
             <div class="swiper-slide reviews__slide">
               <div class="reviews__slider-body">
-                <h3 class="reviews__slider-name">Дарья Астахова</h3>
-                <p class="reviews__slider-prof">Теплые полы</p>
+                <h3 class="reviews__slider-name"><?php echo $val["name"];?></h3>
+                <p class="reviews__slider-prof"><?php echo $val["service"];?></p>
                 <p class="reviews__slider-descr">
-                  С днем рождения поздравляюИ желаю день за днемБыть счастливее и
-                  ярче,Словно солнце за окном.Пожелаю я здоровья,Много смеха и
-                  тепла,Чтоб родные были рядомИ, конечно же, добра!
+                  <?php echo $val["text-rev"];?>
                 </p>
+                <div>
+                  <?php 
+                    $count_random_star = rand(4, 5);
+                  ?>
+                </div>
                 <ul class="reviews__slider-stars">
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star"></li>
+                  <?php
+                    for ($n = 1; $n <= 5; $n++) {
+                    if ($n <= $count_random_star) {
+                      ?>
+                        <li class="reviews__slider-star orange"></li>
+                      <?php
+                    }  else {
+                      ?>
+                        <li class="reviews__slider-star"></li>
+                      <?php
+                    }
+                  ?>
+                  <?php } ?>
                 </ul>
               </div>
             </div>
-            <div class="swiper-slide reviews__slide">
-              <div class="reviews__slider-body">
-                <h3 class="reviews__slider-name">Дарья Астахова</h3>
-                <p class="reviews__slider-prof">Теплые полы</p>
-                <p class="reviews__slider-descr">
-                  С днем рождения поздравляюИ желаю день за днемБыть счастливее и
-                  ярче,Словно солнце за окном.Пожелаю я здоровья,Много смеха и
-                  тепла,Чтоб родные были рядомИ, конечно же, добра!
-                </p>
-                <ul class="reviews__slider-stars">
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star"></li>
-                </ul>
-              </div>
-            </div>
-            <div class="swiper-slide reviews__slide">
-              <div class="reviews__slider-body">
-                <h3 class="reviews__slider-name">Дарья Астахова</h3>
-                <p class="reviews__slider-prof">Теплые полы</p>
-                <p class="reviews__slider-descr">
-                  С днем рождения поздравляюИ желаю день за днемБыть счастливее и
-                  ярче,Словно солнце за окном.Пожелаю я здоровья,Много смеха и
-                  тепла,Чтоб родные были рядомИ, конечно же, добра!
-                </p>
-                <ul class="reviews__slider-stars">
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star"></li>
-                </ul>
-              </div>
-            </div>
-            <div class="swiper-slide reviews__slide">
-              <div class="reviews__slider-body">
-                <h3 class="reviews__slider-name">Дарья Астахова</h3>
-                <p class="reviews__slider-prof">Теплые полы</p>
-                <p class="reviews__slider-descr">
-                  С днем рождения поздравляюИ желаю день за днемБыть счастливее и
-                  ярче,Словно солнце за окном.Пожелаю я здоровья,Много смеха и
-                  тепла,Чтоб родные были рядомИ, конечно же, добра!
-                </p>
-                <ul class="reviews__slider-stars">
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star"></li>
-                </ul>
-              </div>
-            </div>
-            <div class="swiper-slide reviews__slide">
-              <div class="reviews__slider-body">
-                <h3 class="reviews__slider-name">Дарья Астахова</h3>
-                <p class="reviews__slider-prof">Теплые полы</p>
-                <p class="reviews__slider-descr">
-                  С днем рождения поздравляюИ желаю день за днемБыть счастливее и
-                  ярче,Словно солнце за окном.Пожелаю я здоровья,Много смеха и
-                  тепла,Чтоб родные были рядомИ, конечно же, добра!
-                </p>
-                <ul class="reviews__slider-stars">
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star"></li>
-                </ul>
-              </div>
-            </div>
-            <div class="swiper-slide reviews__slide">
-              <div class="reviews__slider-body">
-                <h3 class="reviews__slider-name">Дарья Астахова</h3>
-                <p class="reviews__slider-prof">Теплые полы</p>
-                <p class="reviews__slider-descr">
-                  С днем рождения поздравляюИ желаю день за днемБыть счастливее и
-                  ярче,Словно солнце за окном.Пожелаю я здоровья,Много смеха и
-                  тепла,Чтоб родные были рядомИ, конечно же, добра!
-                </p>
-                <ul class="reviews__slider-stars">
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star orange"></li>
-                  <li class="reviews__slider-star"></li>
-                </ul>
-              </div>
-            </div>
+          <?php } ?>
           </div>
           <div class="reviews__pagination"></div>
         </div>
       </div>
     </section>
+    </div>
+    <div class="modal" id="ventilation">
+        <div class="modal__inner">
+            <div class="modal__body">
+              <?php echo do_shortcode('[stm-calc id="1013"]'); ?>
+            </div>
+            <button class="modal__btn-close" arial-label="Закрыть окно"></button>
+        </div>
+    </div>
+    <div class="modal" id="heating">
+        <div class="modal__inner">
+          <div class="modal__body">
+            <?php echo do_shortcode('[stm-calc id="3599"]'); ?>
+          </div>
+          <button class="modal__btn-close" arial-label="Закрыть окно"></button>
+        </div>
+    </div>
+    <div class="modal" id="contact-form-4236">
+        <div class="modal__inner">
+          <div class="modal__body modal__contact-form">
+            <button class="modal__btn-close black" arial-label="Закрыть окно"></button>
+            <?php echo do_shortcode('[contact-form-7 id="4236" title="Форма получить смету"]'); ?>
+          </div>
+        </div>
+    </div>
+    <div class="modal" id="contact-form-4237">
+        <div class="modal__inner">
+          <div class="modal__body modal__contact-form">
+            <button class="modal__btn-close black" arial-label="Закрыть окно"></button>
+            <?php echo do_shortcode('[contact-form-7 id="4237" title="Форма задать вопрос"]'); ?>
+          </div>
+        </div>
+    </div>
+    <div class="modal" id="contact-form-4238">
+        <div class="modal__inner">
+          <div class="modal__body modal__contact-form">
+            <button class="modal__btn-close black" arial-label="Закрыть окно"></button>
+            <?php echo do_shortcode('[contact-form-7 id="4238" title="Форма обратный звонок"]'); ?>
+          </div>
+        </div>
+    </div> 
+
+
+    
+    <?php get_footer();?>
+
+
+<div>

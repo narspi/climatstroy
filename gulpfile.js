@@ -71,6 +71,7 @@ const jsLibs = () => {
     "node_modules/lazysizes/lazysizes.min.js",
     "node_modules/@fancyapps/ui/dist/index.umd.js",
     "node_modules/dragscroll/dragscroll.js",
+    "node_modules/inputmask/dist/inputmask.min.js",
   ])
     .pipe(concat("libs.js"))
     .pipe(uglify())

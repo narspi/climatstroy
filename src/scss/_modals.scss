@@ -1,0 +1,112 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  z-index: 3;
+  overflow: auto;
+  display: none;
+  &.open {
+    display: flex;
+  }
+  &__inner {
+    margin: auto;
+    position: relative;
+    padding: 40px 15px;
+  }
+
+  &__btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    display: block;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url(../img/btn-close.svg);
+    width: 20px;
+    height: 20px;
+    color: #fff;
+
+    &.black {
+      background-image: url(../img/btn-close-black.svg);
+    }
+  }
+
+  &__contact-form {
+    width: 600px;
+    border-radius: 5px;
+    position: relative;
+    padding: 75px 50px 25px;
+    background-color: #fff;
+    color: #000;
+  }
+
+  &__title {
+    color: #ea572e;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__descr {
+    margin-top: 15px;
+    margin-bottom: 40px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__form {
+    & p {
+      & br {
+        display: none;
+      }
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      & > span {
+        display: flex;
+        flex-direction: column;
+      }
+
+      & > span > span {
+        color: #ea572e;
+        margin-bottom: 3px;
+        font-size: 12px;
+      }
+
+      & > span > input {
+        width: 100%;
+        padding: 11px 16px;
+        background-color: #fff;
+        border: 2px solid #ff9900;
+        font-size: 16px;
+        border-radius: 5px;
+        line-height: 1.3;
+        order: 1;
+        &::placeholder {
+          color: #939393;
+        }
+      }
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: 11px 16px;
+    background-color: #fff;
+    border: 2px solid #ff9900;
+    font-size: 16px;
+    border-radius: 5px;
+    line-height: 1.3;
+    order: 1;
+    resize: none;
+    &::placeholder {
+      color: #939393;
+    }
+  }
+}

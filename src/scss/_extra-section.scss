@@ -1,4 +1,4 @@
-.prices {
+.extra-section {
   padding: 67px 0 71px;
 
   &__title {
@@ -6,6 +6,10 @@
     font-size: 36px;
     line-height: 1.5;
     text-transform: uppercase;
-    margin: 0;
+    margin: 0 0 20px 0;
+  }
+
+  & .calc-container .calc-list__indexed {
+    z-index: unset;
   }
 }

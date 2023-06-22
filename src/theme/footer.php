@@ -77,7 +77,7 @@
         <div class="container footer__bottom-inner">
           <div class="footer__intro">
             <a class="footer__logo" href="#">
-              <img src="/img/footer-logo.svg" alt="logo" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/footer-logo.svg" alt="logo" />
             </a>
             <ul class="footer__social">
               <li class="footer__social-item">
@@ -110,8 +110,8 @@
             </ul>
             <a class="footer__policy" href="#">Политика конфидециальности</a>
             <div class="footer__paymends-card">
-              <img src="img/master-card.svg" alt="visa" />
-              <img src="img/visa.svg" alt="master card" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/master-card.svg" alt="visa" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/img/visa.svg" alt="master card" />
             </div>
           </div>
           <ul class="footer__menu">
@@ -158,22 +158,21 @@
             <div class="footer__contacts-block">
               <p class="footer__contacts-top">Контактный телефон</p>
               <div class="footer__contacts-body">
-                <a href="tel:+74959991707">+7 495 999-17-07</a>
-                <a href="tel:8008750015">8 800 875 00 15</a>
+                <a href="tel:+74959991707">+7 (495) 999-17-07</a>
+                <a href="tel:+79165483408">+7 (916) 548 34 08</a>
               </div>
             </div>
             <div class="footer__contacts-block">
               <p class="footer__contacts-top">E-Mail</p>
               <div class="footer__contacts-body">
-                <a href="malito:info@klimat-stroi.ru">info@klimat-stroi.ru</a>
+                <a href="malito:info@climat-stroy.ru">info@climat-stroy.ru</a>
               </div>
             </div>
             <div class="footer__contacts-block">
               <p class="footer__contacts-top">Адрес</p>
               <div class="footer__contacts-body">
                 <p>
-                  127273 г.Москва, СВАО<br />
-                  Отрадное, Отрадная улица 25
+                  119619, г. Москва, район<br>Солнцево, улица Юлиана<br>Семёнова, 8к1
                 </p>
               </div>
             </div>
@@ -181,7 +180,7 @@
               <p class="footer__contacts-top">Время работы</p>
               <div class="footer__contacts-body">
                 <p>
-                  1Пн-Пт с 10:00 до 19:00<br />
+                  Пн-Пт с 10:00 до 19:00<br />
                   Сб-Вс выходные
                 </p>
               </div>
@@ -199,7 +198,6 @@
         </div>
       </div>
     </footer>
-    <script src="js/libs.js"></script>
-    <script src="js/main.js"></script>
+    <?php wp_footer();?>
   </body>
 </html>

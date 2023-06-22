@@ -8,6 +8,10 @@
   background-position: center;
   padding-bottom: 70px;
 
+  &__text {
+    max-width: 564px;
+  }
+
   &__title {
     font-weight: 700;
     font-size: 36px;
