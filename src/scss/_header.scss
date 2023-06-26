@@ -17,88 +17,26 @@
   }
 
   &__burger {
-    margin-left: auto;
+    align-self: stretch;
     flex-shrink: 0;
     padding: 0;
     margin: 0;
     border: none;
     background-color: transparent;
-    width: 18px;
-    height: 18px;
+    width: 33px;
     background-image: url(../img/burger-icon.svg);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
+    background-size: 18px 18px;
+    background-position: left center;
+    outline: none;
 
-  &__drop-nav {
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    & .header__drop-elem {
-      position: absolute;
-      top: calc(100% - 5px);
-      left: -44px;
-      display: none;
-    }
-
-    &:hover .header__drop-elem {
-      display: block;
-    }
-
-    & ul {
-      padding-left: 0;
-      margin: 0;
-      list-style: none;
-      padding: 4px 22px 17px;
-      background-color: #fff;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-      border-radius: 4px;
-    }
-
-    & a {
-      padding: 10px 0;
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      font-size: 16px;
-      line-height: 1.3;
-      color: #000000;
-      white-space: nowrap;
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 5px;
-
-      }
-    }
-
-    & .header__drop-elem > ul > li > ul  {
-      display: none;
-    }
-
-    .header__drop-elem > ul > li > ul {
-      position: relative;
-
-      &::before {
-        content: "";
-        height: 100%;
-        width: 32px;
-        position: absolute;
-        top: 0;
-        left: -32px;
-      }
-    }
-
-    & .header__drop-elem > ul > li:hover >  ul {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: calc(100% + 10px);
+    &.close {
+      background-image: url(../img/btn-close-black.svg);
     }
   }
 
-  &__menu-left, &__menu-right {
+  &__menu-left,
+  &__menu-right {
     display: none;
   }
 
@@ -244,5 +182,132 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    &.close {
+      background-image: url(../img/btn-close-black.svg);
+    }
+  }
+}
+
+.drop-nav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 64px);
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 3;
+  display: none;
+
+  &.open {
+    display: block;
+  }
+
+  & .simplebar-scrollbar:before {
+    background-color: #fff;
+  }
+
+  &__inner {
+    position: relative;
+    padding: 15px 0;
+    display: flex;
+  }
+
+  &__inner  ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__inner li.menu-item-has-children::after {
+    content: "";
+    margin-left: 10px;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url(../img/arrow-next.svg);
+  }
+
+  &__inner > ul > li  ul {
+    display: none;
+  }
+
+  &__inner > ul  li {
+    display: flex;
+    align-items: center;
+    max-width: 275px;
+  }
+
+  & a {
+    padding: 10px 0;
+    width: 275px;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #000000;
+  }
+
+  &__inner {
+    height: var(--drop-height);
+  }
+
+  &__inner  ul {
+    padding: 4px 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+
+  &__inner li {
+    padding: 0 15px;
+  }
+
+  &__inner ul {
+    position: relative;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    z-index: 2;
+  }
+
+  &__inner > ul > li.menu-item-has-children ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    height: var(--drop-height);
+    width: calc(100% + 15px);
+    z-index: -1;
+  }
+
+  &__inner > ul li:hover {
+    background-color: #dfecfa;
+  }
+
+  &__inner > ul > li.menu-item-has-children:hover > ul {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: calc(100% + 15px);
+  }
+
+  &__inner > ul > li.menu-item-has-children:hover > ul > li.menu-item-has-children:hover > ul{
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: calc(100% + 15px);
+  }
+
+  &__inner > ul > li.menu-item-has-children:hover > ul > li.menu-item-has-children:hover > ul > li.menu-item-has-children:hover > ul{
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: calc(100% + 15px);
   }
 }

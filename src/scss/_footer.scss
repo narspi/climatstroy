@@ -12,7 +12,40 @@
   }
 
   &__body {
+    height: 300px;
+    overflow: hidden;
+    transition: height .3s;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-image: linear-gradient(to top, #fff, transparent);
+    }
+  }
+
+  &__top-foot {
     margin-bottom: 86px;
+  }
+
+  &__top-btn {
+    display: none;
+    background-color: transparent;
+    color: #7C96BC;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 700;
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.show {
+      display: block;
+    }
   }
 
   &__map {
@@ -52,6 +85,7 @@
   &__logo {
     margin-bottom: 25px;
     display: block;
+    width: fit-content;
 
     & img {
       display: block;

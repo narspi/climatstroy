@@ -11,6 +11,7 @@ function theme_name_scripts() {
 
 
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+add_theme_support( 'title-tag' );
 
 
  
@@ -26,8 +27,9 @@ add_action( 'wp_enqueue_scripts', 'remove_css_and_js', 999 );
 add_action( 'after_setup_theme', function(){
     
 	register_nav_menus( [
-		'top_menu' => 'Меню в шапке',
-		'top_drop_menu' => 'Выпадающее меню в шапке'
+		'main_menu' => 'Основное меню',
+		'top_drop_menu' => 'Выпадающее меню в шапке',
+		'footer_menu' => 'Меню в подвале'
 	] );
 } );
 
@@ -54,4 +56,12 @@ if( function_exists('acf_add_options_page') ) {
         'parent_slug'   => 'theme-general-settings',
     ));
     
+}
+
+add_action("wp_head", "wp_head_meta_description", 1);
+function wp_head_meta_description() {
+	global $post;
+	if( is_single() ) {
+		echo "<meta name=\"description\" value=\"" . esc_attr( get_post_meta( $post->ID, 'seo_description', true ) ) ."\" />\n\r";
+	}
 }

@@ -1,9 +1,21 @@
 @import "./libs";
 
+:root {
+  --padding-desctop: 0px;
+  --drop-height: 100%;
+}
+
 body {
   font-size: 16px;
   line-height: 1.2;
   font-family: "Montserrat", sans-serif;
+  padding-right: var(--padding-desctop);
+}
+
+@media (pointer:coarse) {
+  body {
+    padding-right: 0px;
+  }
 }
 
 button {
@@ -63,6 +75,7 @@ button {
 @import "./advantages";
 @import "./persons";
 @import "./extra-section";
+@import "./steps";
 @import "./documents";
 @import "./projects";
 @import "./answers";

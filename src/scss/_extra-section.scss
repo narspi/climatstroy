@@ -1,4 +1,5 @@
 .extra-section {
+  scroll-margin-top: 150px;
   padding: 67px 0 71px;
 
   &__title {
@@ -11,5 +12,10 @@
 
   & .calc-container .calc-list__indexed {
     z-index: unset;
+  }
+
+  & iframe {
+    width: 100%;
+    border: none;
   }
 }

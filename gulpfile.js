@@ -39,6 +39,7 @@ const transportCssLibs = () => {
     "node_modules/modern-normalize/modern-normalize.css",
     "node_modules/@fancyapps/ui/dist/fancybox/fancybox.css",
     "node_modules/swiper/swiper-bundle.css",
+    "node_modules/simplebar/dist/simplebar.css",
   ])
     .pipe(concat("_libs.scss"))
     .pipe(dest("src/scss"));
@@ -72,6 +73,7 @@ const jsLibs = () => {
     "node_modules/@fancyapps/ui/dist/index.umd.js",
     "node_modules/dragscroll/dragscroll.js",
     "node_modules/inputmask/dist/inputmask.min.js",
+    "node_modules/simplebar/dist/simplebar.js",
   ])
     .pipe(concat("libs.js"))
     .pipe(uglify())
