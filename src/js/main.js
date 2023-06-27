@@ -17,6 +17,7 @@ const headerBurger = document.querySelector(".header__burger");
 const headerMenuMobile = document.querySelector(".header__menu-mobile");
 const dropNav = document.querySelector(".drop-nav");
 const lists = document.querySelectorAll(".drop-nav ul");
+const liLists = document.querySelectorAll(".drop-nav .menu-item-has-children");
 
 const btnsModals = document.querySelectorAll("[data-modal-target]");
 const btnsClose = document.querySelectorAll(".modal__btn-close");
@@ -34,6 +35,13 @@ inputMaskElem.forEach((elem) => {
 
 new SimpleBar(dropNav, {
   autoHide: false,
+});
+
+liLists.forEach((item) => {
+  const btn = document.createElement("button");
+  btn.setAttribute("aria-label", "открыть под меню");
+  btn.classList.add("menu-item-btn");
+  item.children[0].after(btn);
 });
 
 const resObs = new ResizeObserver((entries) => {
@@ -62,7 +70,7 @@ const openDropMenuFoo = () => {
     dropNav.classList.remove("open");
     document.body.style.removeProperty("--padding-desctop");
 
-    focusWrapper.removeAttribute("inert");
+    if (focusWrapper) focusWrapper.removeAttribute("inert");
     footer.removeAttribute("inert");
   } else {
     headerBurger.classList.add("close");
@@ -74,7 +82,7 @@ const openDropMenuFoo = () => {
     dropNav.classList.add("open");
     document.body.style.setProperty("--padding-desctop", padding);
 
-    focusWrapper.toggleAttribute("inert");
+    if (focusWrapper) focusWrapper.toggleAttribute("inert");
     footer.toggleAttribute("inert");
   }
 };
@@ -87,7 +95,7 @@ document.addEventListener("keydown", function (e) {
     dropNav.classList.remove("open");
     document.body.style.removeProperty("--padding-desctop");
 
-    focusWrapper.removeAttribute("inert");
+    if (focusWrapper) focusWrapper.removeAttribute("inert");
     footer.removeAttribute("inert");
   }
 });
@@ -98,31 +106,54 @@ headerMenuMobile.addEventListener("click", openDropMenuFoo);
 dropNav.addEventListener("click", (event) => {
   const target = event.target;
   if (target.classList.contains("menu-item-btn")) {
-    console.log(target.parentNode);
+    if (target.classList.contains("open")) {
+      const nextList = target.nextElementSibling;
+      if (nextList) {
+        const btns = nextList.querySelectorAll(".menu-item-btn");
+        console.log(btns)
+        btns.forEach((btn) => btn.classList.remove("open"));
+      }
+      
+    } else {
+      const parentUl = target.parentNode.parentNode;
+      console.dir(parentUl.children)
+      const OtherLiHasChildren = [...parentUl.children].filter(li=>{
+        if (li && li !== target.parentNode && li.classList.contains('menu-item-has-children')) {
+          return true;
+        }
+      });
+      OtherLiHasChildren.forEach(item => {
+        const btnsOpen = item.querySelectorAll('.menu-item-btn.open');
+        btnsOpen.forEach(btn=>btn.classList.remove('open'))
+      })
+    }
+    target.classList.toggle("open");
   }
 });
 
-if (footerBody.children[0].clientHeight > 300) {
-  footerTopBtn.classList.add("show");
+if (footerTopBtn) {
+  if (footerBody.children[0].clientHeight > 300) {
+    footerTopBtn.classList.add("show");
+  }
+
+  footerTopBtn.addEventListener("click", () => {
+    if (footerTopBtn.classList.contains("open")) {
+      footerBody.style.height = null;
+      footerTopBtn.classList.remove("open");
+      footerTopBtn.textContent = "Подробнее";
+    } else {
+      footerBody.style.height = footerBody.children[0].clientHeight + "px";
+      footerTopBtn.classList.add("open");
+      footerTopBtn.textContent = "Скрыть";
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (footerTopBtn.classList.contains("open")) {
+      footerBody.style.height = footerBody.children[0].clientHeight + "px";
+    }
+  });
 }
-
-footerTopBtn.addEventListener("click", () => {
-  if (footerTopBtn.classList.contains("open")) {
-    footerBody.style.height = null;
-    footerTopBtn.classList.remove("open");
-    footerTopBtn.textContent = "Подробнее";
-  } else {
-    footerBody.style.height = footerBody.children[0].clientHeight + "px";
-    footerTopBtn.classList.add("open");
-    footerTopBtn.textContent = "Скрыть";
-  }
-});
-
-window.addEventListener("resize", () => {
-  if (footerTopBtn.classList.contains("open")) {
-    footerBody.style.height = footerBody.children[0].clientHeight + "px";
-  }
-});
 
 const modalOpenFoo = (event) => {
   const target = event.target;
@@ -136,7 +167,7 @@ const modalOpenFoo = (event) => {
     document.body.style.overflow = "hidden";
     document.body.style.paddingRight = padding;
     header.toggleAttribute("inert");
-    focusWrapper.toggleAttribute("inert");
+    if (focusWrapper) focusWrapper.toggleAttribute("inert");
     footer.toggleAttribute("inert");
   }
 };
@@ -147,7 +178,7 @@ const closeModalFoo = (event) => {
   document.body.style.overflow = null;
   document.body.style.paddingRight = null;
   header.toggleAttribute("inert");
-  focusWrapper.toggleAttribute("inert");
+  if (focusWrapper) focusWrapper.toggleAttribute("inert");
   footer.toggleAttribute("inert");
 };
 
@@ -349,15 +380,17 @@ Fancybox.bind("[data-fancybox]", {
   },
 });
 
-answersAccardion.addEventListener("click", (event) => {
-  const target = event.target;
-  if (target.closest(".answers__accardion-btn")) {
-    const btn = target.closest(".answers__accardion-btn");
-    const dropElem = btn.nextElementSibling;
-    btn.classList.toggle("active");
-    dropElem.classList.toggle("active");
-  }
-});
+if (answersAccardion) {
+  answersAccardion.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target.closest(".answers__accardion-btn")) {
+      const btn = target.closest(".answers__accardion-btn");
+      const dropElem = btn.nextElementSibling;
+      btn.classList.toggle("active");
+      dropElem.classList.toggle("active");
+    }
+  });
+}
 
 new Swiper(".reviews__slider", {
   loop: true,
@@ -379,36 +412,54 @@ new Swiper(".reviews__slider", {
   },
 });
 
-const frame = document.getElementById("quiz_iframe");
-if (frame) {
-  const frameWindow = frame.contentWindow;
-  frame.addEventListener("load", () => {
-    frame.height = frameWindow.document.body.scrollHeight + "px";
+const iframe = document.getElementById("quiz_iframe");
+if (iframe) {
+  console.log("frame start");
+  const iframeWindow = iframe.contentWindow;
 
-    const resizeObserver = new frameWindow.ResizeObserver(() => {
-      frameWindow.top.postMessage(JSON.stringify({ narspiText: "Hello" }), "*");
+  function afterLoading() {
+    console.log("afterLoading");
+    const iframeWindow = iframe.contentWindow;
+    iframe.height = iframeWindow.document.body.scrollHeight + "px";
+
+    const resizeObserver = new iframeWindow.ResizeObserver(() => {
+      iframeWindow.top.postMessage(
+        JSON.stringify({ narspiText: "Hello" }),
+        "*"
+      );
     });
 
-    resizeObserver.observe(frameWindow.document.body);
-  });
+    resizeObserver.observe(iframeWindow.document.body);
 
-  window.addEventListener(
-    "message",
-    function (event) {
-      if (typeof event.data === "string") {
-        try {
-          const data = JSON.parse(event.data);
-          console.log("Parsed message data", data);
-          if (data?.narspiText === "Hello") {
-            frame.height = frameWindow.document.body.scrollHeight + "px";
+    window.addEventListener(
+      "message",
+      function (event) {
+        if (typeof event.data === "string") {
+          try {
+            const data = JSON.parse(event.data);
+            console.log("Parsed message data", data);
+            if (data?.narspiText === "Hello") {
+              iframe.height = iframeWindow.document.body.scrollHeight + "px";
+            }
+          } catch (error) {
+            console.log("Error parsing message data:", error);
           }
-        } catch (error) {
-          console.log("Error parsing message data:", error);
         }
-      }
-    },
-    false
-  );
+      },
+      false
+    );
+  }
+
+  function checkIframeLoaded() {
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    if (iframeDoc.readyState == "complete") {
+      afterLoading();
+      return;
+    }
+    window.setTimeout(checkIframeLoaded, 100);
+  }
+
+  checkIframeLoaded();
 }
 
 let fucks = document.querySelectorAll("iframe");

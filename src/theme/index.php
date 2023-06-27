@@ -34,6 +34,11 @@
             </ul>
         </div>
     </div>
+    <div class="extra-section">
+        <div class="container">
+            <iframe class="iframe-allowed" id="quiz_iframe" src="/quiz/index.html" widht="100%" height="942px"></iframe>
+        </div>
+    </div>
     <section class="about">
         <div class="about__inner">
             <div class="about__content">
@@ -294,11 +299,6 @@
             </ul>
         </div>
     </section>
-    <div class="extra-section">
-        <div class="container">
-            <iframe class="iframe-allowed" id="quiz_iframe" src="/quiz/index.html" widht="100%" height="942px"></iframe>
-        </div>
-    </div>
     <section class="documents">
         <div class="container">
             <h2 class="documents__title">Наши документы</h2>
@@ -376,41 +376,41 @@
             <div class="projects__pagination"></div>
         </div>
     </section>
-    <section class="answers">
-        <div class="container">
-            <h2 class="answers__title">ОТВЕТЫ НА ЧАСТЫЕ ВОПРОСЫ</h2>
+  <section class="answers" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="container">
+        <h2 class="answers__title">ОТВЕТЫ НА ЧАСТЫЕ ВОПРОСЫ</h2>
+        <?php
+        $data_acf = get_field('quest-answer');
+        $length_arr_answers = count($data_acf) / 2;
+        $current__data = array();
+        for ($index = 1; $index <= $length_arr_answers; $index++) {
+            $current__data[$index]["quest"] = $data_acf["quest-$index"];
+            $current__data[$index]["ans"] = $data_acf["ans-$index"];
+        }
+        ;
+        ?>
+        <ul class="answers__accardion">
             <?php
-            $data_acf = get_field('quest-answer');
-            $length_arr_answers = count($data_acf) / 2;
-            $current__data = array();
-            for ($index = 1; $index <= $length_arr_answers; $index++) {
-                $current__data[$index]["quest"] = $data_acf["quest-$index"];
-                $current__data[$index]["ans"] = $data_acf["ans-$index"];
-            }
-            ;
-            ?>
-            <ul class="answers__accardion">
-                <?php
-                foreach ($current__data as $key => $val) {
-                    ?>
-                    <li class="answers__accardion-elem">
-                        <button class="answers__accardion-btn">
-                            <h3 class="answers__accardion-title">
-                                <?php echo $val["quest"]; ?>
-                            </h3>
-                        </button>
-                        <div class="answers__accardion-drop">
-                            <div class="answers__accardion-body">
-                                <p>
-                                    <?php echo $val["ans"]; ?>
-                                </p>
-                            </div>
+            foreach ($current__data as $key => $val) {
+                ?>
+                <li class="answers__accardion-elem" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <button class="answers__accardion-btn">
+                        <h3 class="answers__accardion-title" itemprop="name">
+                            <?php echo $val["quest"]; ?>
+                        </h3>
+                    </button>
+                    <div class="answers__accardion-drop" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <div class="answers__accardion-body">
+                            <p itemprop="text">
+                                <?php echo $val["ans"]; ?>
+                            </p>
                         </div>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
-    </section>
+                    </div>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</section>
     <section class="reviews" id="otzyv">
         <div class="container">
             <h2 class="reviews__title">Отзывы</h2>
@@ -470,46 +470,6 @@
             </div>
         </div>
     </section>
-</div>
-<div class="modal" id="ventilation">
-    <div class="modal__inner">
-        <div class="modal__body">
-            <?php echo do_shortcode('[stm-calc id="1013"]'); ?>
-        </div>
-        <button class="modal__btn-close" arial-label="Закрыть окно"></button>
-    </div>
-</div>
-<div class="modal" id="heating">
-    <div class="modal__inner">
-        <div class="modal__body">
-            <?php echo do_shortcode('[stm-calc id="3599"]'); ?>
-        </div>
-        <button class="modal__btn-close" arial-label="Закрыть окно"></button>
-    </div>
-</div>
-<div class="modal" id="contact-form-4236">
-    <div class="modal__inner">
-        <div class="modal__body modal__contact-form">
-            <button class="modal__btn-close black" arial-label="Закрыть окно"></button>
-            <?php echo do_shortcode('[contact-form-7 id="4236" title="Форма получить смету"]'); ?>
-        </div>
-    </div>
-</div>
-<div class="modal" id="contact-form-4237">
-    <div class="modal__inner">
-        <div class="modal__body modal__contact-form">
-            <button class="modal__btn-close black" arial-label="Закрыть окно"></button>
-            <?php echo do_shortcode('[contact-form-7 id="4237" title="Форма задать вопрос"]'); ?>
-        </div>
-    </div>
-</div>
-<div class="modal" id="contact-form-4238">
-    <div class="modal__inner">
-        <div class="modal__body modal__contact-form">
-            <button class="modal__btn-close black" arial-label="Закрыть окно"></button>
-            <?php echo do_shortcode('[contact-form-7 id="4238" title="Форма обратный звонок"]'); ?>
-        </div>
-    </div>
 </div>
 
 <?php get_footer(); ?>

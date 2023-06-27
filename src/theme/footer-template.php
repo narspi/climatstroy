@@ -42,17 +42,17 @@
 <footer class="footer">
       <div class="footer__top">
         <div class="container">
-          <h2 class="footer__title"><?php the_title(); ?> В МОСКВЕ</h2>
-          <div class="footer__body">
+          <h1 class="footer__title"><?php the_title(); ?></h1>
+          <div class="footer__body full">
             <div class="footer___body-inner">
               <?php the_content(); ?>
             </div>
           </div>
-          <div class="footer__top-foot">
-            <button class="footer__top-btn">Подробнее</button>
-          </div>
         </div>
       </div>
+      <?php 
+        if (is_page(2466)) {
+      ?>
       <div class="footer__map">
         <div class="footer__map-inner">
           <iframe
@@ -63,6 +63,7 @@
           ></iframe>
         </div>
       </div>
+      <?php } ?>
       <div class="footer__bottom">
         <div class="container footer__bottom-inner">
           <div class="footer__intro">

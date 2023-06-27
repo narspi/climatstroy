@@ -25,6 +25,14 @@
       height: 10px;
       background-image: linear-gradient(to top, #fff, transparent);
     }
+
+    &.full {
+      height: unset;
+      margin-bottom: 30px;
+      &::before {
+        display: none;
+      }
+    }
   }
 
   &__top-foot {
