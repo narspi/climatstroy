@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 <div class="focus-wrapper">
     <section class="top" style="--top-bg: url(<?php echo get_field('image'); ?>);">
         <div class="container">
@@ -21,6 +20,13 @@
             </ul>
         </div>
     </section>
+<div class="container">
+    <?php
+    if (function_exists('rank_math_the_breadcrumbs') && !is_front_page()) {
+        rank_math_the_breadcrumbs();
+    }
+    ?>
+</div>
     <div class="top-calc">
         <div class="container">
             <ul class="top-calc__list">
@@ -34,11 +40,16 @@
             </ul>
         </div>
     </div>
+    <?php
+    $allow_quiz = get_field('quiz-show');
+    if ($allow_quiz) {
+    ?>
     <div class="extra-section">
         <div class="container">
             <iframe class="iframe-allowed" id="quiz_iframe" src="/quiz/index.html" widht="100%" height="942px"></iframe>
         </div>
     </div>
+    <?php } ?>
     <section class="about">
         <div class="about__inner">
             <div class="about__content">
@@ -261,6 +272,9 @@
     </section>
     <?php
     $calc = get_field('calc');
+    preg_match('/\[([^\s\]]+)(?:\s[^\]]*)?\]/', $calc, $matches);
+    $shortcode_tag = isset($matches[1]) ? $matches[1] : '';
+    if ($shortcode_tag && shortcode_exists($shortcode_tag)) {
     ?>
     <section class="extra-section">
         <div class="container">
@@ -270,6 +284,7 @@
             </div>
         </div>
     </section>
+    <?php } ?>
     <section class="steps">
         <div class="container">
             <h2 class="steps__title">
@@ -376,41 +391,43 @@
             <div class="projects__pagination"></div>
         </div>
     </section>
-  <section class="answers" itemscope itemtype="https://schema.org/FAQPage">
-    <div class="container">
-        <h2 class="answers__title">ОТВЕТЫ НА ЧАСТЫЕ ВОПРОСЫ</h2>
-        <?php
-        $data_acf = get_field('quest-answer');
-        $length_arr_answers = count($data_acf) / 2;
-        $current__data = array();
-        for ($index = 1; $index <= $length_arr_answers; $index++) {
-            $current__data[$index]["quest"] = $data_acf["quest-$index"];
-            $current__data[$index]["ans"] = $data_acf["ans-$index"];
-        }
-        ;
-        ?>
-        <ul class="answers__accardion">
+    <section class="answers" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="container">
+            <h2 class="answers__title">ОТВЕТЫ НА ЧАСТЫЕ ВОПРОСЫ</h2>
             <?php
-            foreach ($current__data as $key => $val) {
-                ?>
-                <li class="answers__accardion-elem" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <button class="answers__accardion-btn">
-                        <h3 class="answers__accardion-title" itemprop="name">
-                            <?php echo $val["quest"]; ?>
-                        </h3>
-                    </button>
-                    <div class="answers__accardion-drop" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div class="answers__accardion-body">
-                            <p itemprop="text">
-                                <?php echo $val["ans"]; ?>
-                            </p>
+            $data_acf = get_field('quest-answer');
+            $length_arr_answers = count($data_acf) / 2;
+            $current__data = array();
+            for ($index = 1; $index <= $length_arr_answers; $index++) {
+                $current__data[$index]["quest"] = $data_acf["quest-$index"];
+                $current__data[$index]["ans"] = $data_acf["ans-$index"];
+            }
+            ;
+            ?>
+            <ul class="answers__accardion">
+                <?php
+                foreach ($current__data as $key => $val) {
+                    ?>
+                    <li class="answers__accardion-elem" itemscope itemprop="mainEntity"
+                        itemtype="https://schema.org/Question">
+                        <button class="answers__accardion-btn">
+                            <h3 class="answers__accardion-title" itemprop="name">
+                                <?php echo $val["quest"]; ?>
+                            </h3>
+                        </button>
+                        <div class="answers__accardion-drop" itemscope itemprop="acceptedAnswer"
+                            itemtype="https://schema.org/Answer">
+                            <div class="answers__accardion-body">
+                                <p itemprop="text">
+                                    <?php echo $val["ans"]; ?>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            <?php } ?>
-        </ul>
-    </div>
-</section>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </section>
     <section class="reviews" id="otzyv">
         <div class="container">
             <h2 class="reviews__title">Отзывы</h2>

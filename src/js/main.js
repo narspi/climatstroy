@@ -33,6 +33,32 @@ inputMaskElem.forEach((elem) => {
   im.mask(elem);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const wpadminbar = document.querySelector("#wpadminbar");
+
+  if (wpadminbar) {
+    const options = {
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
+
+    const trueCallback = function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          dropNav.style.setProperty("--adminbar-height", "46px");
+        } else {
+          dropNav.style.removeProperty("--adminbar-height", "46px");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(trueCallback, options);
+
+    observer.observe(wpadminbar);
+
+  }
+});
+
 new SimpleBar(dropNav, {
   autoHide: false,
 });
@@ -53,8 +79,7 @@ const resObs = new ResizeObserver((entries) => {
   lists.forEach((ul) => {
     if (height < ul.clientHeight) height = ul.clientHeight;
   });
-  if (height > 0)
-    dropNav.style.setProperty("--drop-height", height + 30 + "px");
+  if (height > 0) dropNav.style.setProperty("--drop-height", height + "px");
   else dropNav.style.removeProperty("--drop-height");
 });
 
@@ -110,22 +135,25 @@ dropNav.addEventListener("click", (event) => {
       const nextList = target.nextElementSibling;
       if (nextList) {
         const btns = nextList.querySelectorAll(".menu-item-btn");
-        console.log(btns)
+        console.log(btns);
         btns.forEach((btn) => btn.classList.remove("open"));
       }
-      
     } else {
       const parentUl = target.parentNode.parentNode;
-      console.dir(parentUl.children)
-      const OtherLiHasChildren = [...parentUl.children].filter(li=>{
-        if (li && li !== target.parentNode && li.classList.contains('menu-item-has-children')) {
+      console.dir(parentUl.children);
+      const OtherLiHasChildren = [...parentUl.children].filter((li) => {
+        if (
+          li &&
+          li !== target.parentNode &&
+          li.classList.contains("menu-item-has-children")
+        ) {
           return true;
         }
       });
-      OtherLiHasChildren.forEach(item => {
-        const btnsOpen = item.querySelectorAll('.menu-item-btn.open');
-        btnsOpen.forEach(btn=>btn.classList.remove('open'))
-      })
+      OtherLiHasChildren.forEach((item) => {
+        const btnsOpen = item.querySelectorAll(".menu-item-btn.open");
+        btnsOpen.forEach((btn) => btn.classList.remove("open"));
+      });
     }
     target.classList.toggle("open");
   }
@@ -418,8 +446,8 @@ if (iframe) {
   const iframeWindow = iframe.contentWindow;
 
   function afterLoading() {
-    console.log("afterLoading");
     const iframeWindow = iframe.contentWindow;
+    console.log(iframeWindow, "afterloading");
     iframe.height = iframeWindow.document.body.scrollHeight + "px";
 
     const resizeObserver = new iframeWindow.ResizeObserver(() => {
@@ -439,6 +467,7 @@ if (iframe) {
             const data = JSON.parse(event.data);
             console.log("Parsed message data", data);
             if (data?.narspiText === "Hello") {
+              console.log(iframeWindow.document.body);
               iframe.height = iframeWindow.document.body.scrollHeight + "px";
             }
           } catch (error) {
@@ -461,27 +490,3 @@ if (iframe) {
 
   checkIframeLoaded();
 }
-
-let fucks = document.querySelectorAll("iframe");
-let fucksWraper = document.querySelectorAll(".mrg-wrapper");
-
-fucks.forEach((elem) => {
-  if (!elem.classList.contains("iframe-allowed")) {
-    elem.remove();
-  }
-});
-
-fucksWraper.forEach((elem) => elem.remove());
-
-setInterval(() => {
-  fucks = document.querySelectorAll("iframe");
-  fucksWraper = document.querySelectorAll(".fucksWraper");
-
-  fucks.forEach((elem) => {
-    if (!elem.classList.contains("iframe-allowed")) {
-      elem.remove();
-    }
-  });
-
-  fucksWraper.forEach((elem) => elem.remove());
-}, 1000);

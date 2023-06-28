@@ -311,6 +311,17 @@
   }
 }
 
+@media (max-width: 782px) {
+  .admin-bar .header {
+    top: 46px;
+  }
+
+  .admin-bar .drop-nav {
+    top: 110px;
+    height: calc(100% - 110px);
+  }
+}
+
 @media (max-width: 700px) {
   .header {
     &__calc-btn {
@@ -785,6 +796,19 @@
         color: #93b3e4;
       }
     }
+  }
+
+  .admin-bar  {
+    --adminbar-height: -1px;
+    & .header {
+      top: -1px;
+    }
+
+    & .drop-nav {
+      top: calc(64px + var(--adminbar-height));
+      height: calc(100% - (64px + var(--adminbar-height)));
+    }
+    
   }
 }
 

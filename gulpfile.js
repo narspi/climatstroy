@@ -55,6 +55,7 @@ const createCss = () => {
     )
     .pipe(mode.development(sourcemaps.write()))
     .pipe(dest("dist/css"))
+    .pipe(mode.production(dest("src/theme/assets/css")))
     .pipe(sync.stream());
 };
 
@@ -78,6 +79,7 @@ const jsLibs = () => {
     .pipe(concat("libs.js"))
     .pipe(uglify())
     .pipe(dest("dist/js"))
+    .pipe(dest("src/theme/assets/js"))
     .pipe(sync.stream());
 };
 
@@ -85,6 +87,7 @@ const transportJs = () => {
   return src(["src/js/main.js"])
   .pipe(mode.production(uglify()))
   .pipe(dest("dist/js"))
+  .pipe(mode.production(dest("src/theme/assets/js")))
   .pipe(sync.stream());
 };
 
